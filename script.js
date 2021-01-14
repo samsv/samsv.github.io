@@ -1,3 +1,8 @@
+function getHotel() {
+    url = new URL(window.location.href);
+    return url.searchParams.get("hotel");
+}
+
 function addTable() {
     var myTableDiv = document.getElementById("channels");
   
@@ -19,3 +24,6 @@ function addTable() {
     myTableDiv.appendChild(table);
   }
   addTable();
+
+  var mydata = JSON.parse(hotels_data);
+  var hotel = getHotel();
