@@ -3,9 +3,13 @@ function getHotel() {
     return url.searchParams.get("hotel");
 }
 
-function createTable(hotelData) {
+function createTable(hotelData, hotelName) {
     var myTableDiv = document.getElementById("channels");
   
+    var title = document.createElement("H2");
+    title.textContent = `${hotelName}`;
+    myTableDiv.appendChild(title);
+
     var table = document.createElement('TABLE');
   
     var tableBody = document.createElement('TBODY');
@@ -42,6 +46,7 @@ function createTable(hotelData) {
     });
 }
 
-  var hotels = JSON.parse(hotels_data);
-  var hotelName = getHotel();
-  createTable(hotels[hotelName]);
+  var hotels = hotels_data;
+  var hotel = hotels[getHotel()];
+
+  createTable(hotel["channels"], hotel["name"]);
